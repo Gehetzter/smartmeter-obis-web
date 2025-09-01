@@ -1,0 +1,20 @@
+/*!
+ * OpenSML
+ * Copyright(c) 2014-2015 D. Spautz (d.spautz@web.de)
+ * MIT Licensed
+ */
+
+/*!
+ * OpenSML
+ * Copyright(c) 2017 I. Fischer (ingo@fischer-ka.de)
+ * MIT Licensed
+ */
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
