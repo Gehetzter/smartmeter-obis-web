@@ -3,6 +3,7 @@ import { Buffer } from 'buffer';
 window.Buffer = Buffer;
 import SmlProtocol from 'smartmeter-obis/lib/protocols/SmlProtocol.js';
 import Obis from 'smartmeter-obis/lib/ObisNames.js';
+import './testdata.js';
 
 const writeDataCallback = (err, data) => {
   const output = document.getElementById('output');
@@ -53,7 +54,8 @@ const writeDataCallback = (err, data) => {
 window.decodeSml = function(hexString) {
   const cleaned = hexString
     .replace(/0x/g, '')
-    .replace(/,\s*/g, '')
+    .replace(/,/g, '')
+	.replace(/\s*/g, '')
     .toLowerCase();
 
 	const options = {
