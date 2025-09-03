@@ -17,4 +17,13 @@
       flex-direction: column;
       gap: 10px;
       width: 20ch;
-    }</style><script defer="defer" src="bundle.js"></script></head><body><h2>SML Web Decoder</h2><h4>This website uses <a href="https://github.com/Apollon77/smartmeter-obis" target="_blank" rel="noopener noreferrer">https://github.com/Apollon77/smartmeter-obis</a></h4><p>Your data remains private. It's processed entirely within your browser and never sent to any server.<br>This tool allows you to test and analyze the data received from your SML smart meter locally.</p><p>The following chars are automatically removed if hex data is discovered: comma, whitespaces and 0x</p><div id="inputDivs"><textarea id="input" rows="10" placeholder="Enter hexdump or ascii code..."></textarea><div id="buttons"><button onclick="setTestData(0)">Enter Testdata Hex 1</button> <button onclick="setTestData(1)">Enter Testdata Hex 2</button> <button onclick="setTestData(2)">Enter Testdata Ascii</button></div></div><button onclick="decodeSml(document.getElementById('input').value)">Decode</button><div id="output"></div></body></html>
+    }
+	
+	#output {
+	  white-space: pre-wrap;
+	  word-break: break-word;
+	  overflow-wrap: break-word;
+	  max-width: 100%;
+	  font-family: monospace;
+	  padding: 10px;
+	}</style><script defer="defer" src="bundle.js"></script></head><body><h2>SML Web Decoder</h2><h4>This website uses <a href="https://github.com/Apollon77/smartmeter-obis" target="_blank" rel="noopener noreferrer">https://github.com/Apollon77/smartmeter-obis</a></h4><p>Your data remains private. It's processed entirely within your browser and never sent to any server.<br>This tool allows you to test and analyze the data received from your SML smart meter locally.</p><p>The following chars are automatically removed: comma, whitespaces, 0x prefix and {}.<br>Try Testdata Hex 2 for examples.</p><div id="inputDivs"><textarea id="input" rows="10" placeholder="Enter hexdump or ascii code..."></textarea><div id="buttons"><button onclick="setTestData(0)">Enter Testdata Hex 1</button> <button onclick="setTestData(1)">Enter Testdata Hex 2</button></div></div><button onclick="decodeSml(document.getElementById('input').value)">Decode</button><div id="output"></div></body></html>

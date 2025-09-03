@@ -56,6 +56,7 @@ window.decodeSml = function(hexString) {
     .replace(/0x/g, '')
     .replace(/,/g, '')
 	.replace(/\s*/g, '')
+	.replace(/\{([0-9a-fA-F]{2})\}/g,'$1')
     .toLowerCase();
 
 	const options = {
