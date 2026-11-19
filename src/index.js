@@ -58,7 +58,7 @@ const writeDataCallback = (err, data) => {
 
   output.appendChild(table);
 };
-};
+
 window.formatSml = function(hexString) {
   const cleaned = normalizeSmlInput(hexString);
 
