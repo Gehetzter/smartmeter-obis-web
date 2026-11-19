@@ -3,7 +3,17 @@ import { Buffer } from 'buffer';
 window.Buffer = Buffer;
 import SmlProtocol from 'smartmeter-obis/lib/protocols/SmlProtocol.js';
 import Obis from 'smartmeter-obis/lib/ObisNames.js';
+import OpenSml from 'open-sml';
 import './testdata.js';
+
+function normalizeSmlInput(hexString) {
+  return hexString
+    .replace(/0x/gi, '')
+    .replace(/,/g, '')
+    .replace(/\s*/g, '')
+    .replace(/\{([0-9a-fA-F]{2})\}/g, '$1')
+    .toLowerCase();
+}
 
 const writeDataCallback = (err, data) => {
   const output = document.getElementById('output');
@@ -48,16 +58,21 @@ const writeDataCallback = (err, data) => {
 
   output.appendChild(table);
 };
+};
+window.formatSml = function(hexString) {
+  const cleaned = normalizeSmlInput(hexString);
 
-
+  try {
+    const smlFile = new OpenSml.SmlFile();
+    smlFile.parse(Buffer.from(cleaned, 'hex'));
+    document.getElementById('output').textContent = smlFile.toString();
+  } catch (err) {
+    document.getElementById('output').textContent = "Error: " + (err.message ?? String(err));
+  }
+};
 
 window.decodeSml = function(hexString) {
-  const cleaned = hexString
-    .replace(/0x/g, '')
-    .replace(/,/g, '')
-	.replace(/\s*/g, '')
-	.replace(/\{([0-9a-fA-F]{2})\}/g,'$1')
-    .toLowerCase();
+  const cleaned = normalizeSmlInput(hexString);
 
 	const options = {
 	  protocol: "SmlProtocol",
@@ -70,4 +85,3 @@ window.decodeSml = function(hexString) {
 	smProtocol.handleMessage(cleaned);
 
 };
-
